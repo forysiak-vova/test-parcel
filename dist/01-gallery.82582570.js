@@ -1931,7 +1931,40 @@ var _simplelightbox = _interopRequireDefault(require("simplelightbox"));
 var _galleryItems = require("./gallery-items");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"simplelightbox":"../node_modules/simplelightbox/dist/simple-lightbox.modules.js","./gallery-items":"js/gallery-items.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+// import 'simplelightbox/dist/simple-lightbox.min.css';
+// console.log(SimpleLightbox);
+// Change code below this line
+var galleryContainer = document.querySelector('.gallery');
+var cardsMarkup = createImgCardsMarkup(_galleryItems.galleryItems);
+galleryContainer.insertAdjacentHTML('beforeend', cardsMarkup);
+galleryContainer.addEventListener('click', ongalleryContainerClick);
+
+function createImgCardsMarkup(galleryItems) {
+  return galleryItems.map(function (_ref) {
+    var preview = _ref.preview,
+        original = _ref.original;
+    return "\n   <div class=\"gallery__item\">\n  <a class=\"gallery__link\" href=\"".concat(original, "\">\n    <img\n      class=\"gallery__image\"\n      src=\"").concat(preview, "\"\n      data-source=\"").concat(original, "\"\n      alt=\"Image description\"\n    />\n  </a>\n</div>\n   ");
+  }).join('');
+}
+
+console.log(_galleryItems.galleryItems);
+
+function ongalleryContainerClick(e) {
+  var isGalleryClass = e.target.classList.contains('.gallery__image');
+
+  if (!isGalleryClass) {
+    return;
+  }
+
+  console.log(e.target);
+}
+
+; // const instance = basicLightbox.create(`
+// //     <img src=${original} width="800" height="600">
+// // `)
+// instance.show()
+},{"simplelightbox":"../node_modules/simplelightbox/dist/simple-lightbox.modules.js","./gallery-items":"js/gallery-items.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1959,7 +1992,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54610" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52978" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -2135,5 +2168,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/01-gallery.js"], null)
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/01-gallery.js"], null)
 //# sourceMappingURL=/01-gallery.82582570.js.map
