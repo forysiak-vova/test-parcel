@@ -653,7 +653,7 @@ var refs = {
   input: document.querySelector('.feedback-form input')
 };
 refs.form.addEventListener('submit', onFormSubmit);
-refs.textarea.addEventListener('input', (0, _lodash.default)(onTexareaInput, 500));
+refs.textarea.addEventListener('input', onTexareaInput);
 refs.input.addEventListener('input', onInputEmail);
 populateTexterea();
 
@@ -724,7 +724,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64294" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53476" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

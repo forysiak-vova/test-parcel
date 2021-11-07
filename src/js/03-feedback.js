@@ -9,7 +9,7 @@ const refs = {
 };
 
 refs.form.addEventListener('submit', onFormSubmit);
-refs.textarea.addEventListener('input', throttle(onTexareaInput, 500));
+refs.textarea.addEventListener('input', onTexareaInput);
 refs.input.addEventListener('input', onInputEmail);
 
 populateTexterea();
