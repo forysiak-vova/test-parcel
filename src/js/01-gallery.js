@@ -1,7 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
-// import 'simplelightbox/dist/simple-lightbox.min.css';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
-// console.log(SimpleLightbox);
+console.log(SimpleLightbox);
 
 
 import { galleryItems } from './gallery-items';
@@ -50,3 +50,14 @@ function ongalleryContainerClick(e) {
 // // `)
 
 // instance.show()
+
+
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionSelector: "img", //Переключение на имидж
+  captionsData: "alt", //Получение текста из Алт
+  captionPosition: "bottom", //Подпись внизу
+  captionDelay: 250, //Задержка 250 мс
+  showCounter: false, //Счетчик выключен
+  scrollZoom: false, //Масштабирование скролом отключено
+});
+

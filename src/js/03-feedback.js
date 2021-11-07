@@ -1,7 +1,8 @@
-import throttle from 'lodash.throttle'
+import throttle from 'lodash.throttle';
 import '../css/common.css';
 import '../css/03-feedback.css'
 
+const formData = { };
 const refs = {
    form: document.querySelector('.feedback-form'),
    textarea: document.querySelector('.feedback-form textarea'),
@@ -9,15 +10,25 @@ const refs = {
 };
 
 refs.form.addEventListener('submit', onFormSubmit);
-refs.textarea.addEventListener('input', onTexareaInput);
-refs.input.addEventListener('input', onInputEmail);
+refs.textarea.addEventListener('input', throttle(onTexareaInput, 500));
+refs.input.addEventListener('input', throttle(onInputEmail, 500));
+
+
+
+refs.form.addEventListener('input', e => {
+   
+   formData[e.target.name] = e.target.name;
+   console.log(formData);
+   localStorage.setItem('feedback-form-state2', formData)
+});
 
 populateTexterea();
 
 
 function onInputEmail(e) {
-   const email = e.currentTarget.value;
+   const email = e.target.value;
     localStorage.setItem('feedback-form-state1', email);
+
    
 };
 
@@ -28,12 +39,14 @@ function onFormSubmit(e) {
    localStorage.removeItem('feedback-form-state');
    localStorage.removeItem('feedback-form-state1');
    console.log('відправляємо форму');
+  
    
 };
 
 function onTexareaInput(e) {
-    const message = e.currentTarget.value;
+    const message = e.target.value;
    localStorage.setItem('feedback-form-state', message);
+ 
 };
 
 function populateTexterea(e) {
@@ -45,4 +58,5 @@ function populateTexterea(e) {
       refs.textarea.value = savedMessage;
        refs.input.value = saveEmail;
    };
+ 
 };
