@@ -6,7 +6,7 @@ import SimpleLightbox from 'simplelightbox';
 
 import { galleryItems } from './gallery-items';
 
-
+console.log(JSON.stringify(galleryItems));
 
 // Change code below this line
 

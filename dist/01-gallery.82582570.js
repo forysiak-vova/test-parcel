@@ -1934,7 +1934,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // import 'simplelightbox/dist/simple-lightbox.min.css';
 // console.log(SimpleLightbox);
-// Change code below this line
+console.log(JSON.stringify(_galleryItems.galleryItems)); // Change code below this line
+
 var galleryContainer = document.querySelector('.gallery');
 var cardsMarkup = createImgCardsMarkup(_galleryItems.galleryItems);
 galleryContainer.insertAdjacentHTML('beforeend', cardsMarkup);
@@ -1992,7 +1993,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52978" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51489" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
