@@ -6,11 +6,11 @@
   "homepage": "https://github.com/forysiak-vova/test-parcel#readme",
   "scripts": {
     "dev": "parcel src/*.html --open --port 7777",
-    "build": "parcel build src/*.html --public-url /test-parcel"
+    "build": "parcel build src/*.html --public-url /test-parcel/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/forysiak-vova/test-parcel"
+    "url": "git+https://github.com/forysiak-vova/test-parcel/"
   },
   "keywords": [],
   "author": "Volodymyr Forusiak <volodja.forus@gmail.com>",
