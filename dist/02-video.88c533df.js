@@ -229,17 +229,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // if (resOftrueFalse) {
 //    clearInterval(intervalId);
 // }
-var total = 0;
-var timeId = setInterval(function () {
-  if (total === 3) {
-    console.log('видали');
-    clearInterval(timeId);
-    return;
-  }
-
-  console.log('hello');
-  total += 1;
-}, 1000);
+// let total = 0;
+// const timeId = setInterval(() => {
+//    if (total === 3) {
+//        console.log('видали');
+//       clearInterval(timeId);
+//       return;
+//    }
+//      console.log('hello');
+//    total += 1;
+// }, 1000);
+fetch('https://restcountries.com/v3.1/name/peru').then(function (response) {
+  console.log(response);
+});
 },{"../css/common.css":"css/common.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -268,7 +270,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61286" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51964" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

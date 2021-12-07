@@ -36,14 +36,20 @@ import common from '../css/common.css'
 // if (resOftrueFalse) {
 //    clearInterval(intervalId);
 // }
-let total = 0;
-const timeId = setInterval(() => {
-   if (total === 3) {
-       console.log('видали');
-      clearInterval(timeId);
-      return;
-   }
-     console.log('hello');
-   total += 1;
+// let total = 0;
+// const timeId = setInterval(() => {
+//    if (total === 3) {
+//        console.log('видали');
+//       clearInterval(timeId);
+//       return;
+//    }
+//      console.log('hello');
+//    total += 1;
  
-},1000);
+// }, 1000);
+
+fetch('https://restcountries.com/v3.1/name/peru')
+   .then(response => {
+      console.log(response);
+      
+   })
