@@ -61,3 +61,6 @@ const lightbox = new SimpleLightbox(".gallery a", {
   scrollZoom: false, //Масштабирование скролом отключено
 });
 
+
+
+
