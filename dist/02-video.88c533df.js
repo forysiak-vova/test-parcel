@@ -3110,21 +3110,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //    .then(response => {
 //       console.log(response);
 //    })
-// const onEntry = entries => {
-//     entries.forEach(entry => {
-//         if (entry.isIntersecting && photoApiService.query !== '') {
-//             photoApiService.fetchPhoto().then(renderCardMarkup)
-//         }
-//     });
-// }
-// const options = {
-//     rootMargin: '200px'
-// }
-// const observer = new IntersectionObserver(onEntry, options)
-// observer.observe(refs.divEl)
 var gallery = document.querySelector('.gallery');
 var form = document.getElementById('search-form');
-var divEl = document.querySelector('.divEl'); // async function getUser(name) {
+var divEl = document.querySelector('.divEl');
+var btn = document.querySelector('.load-more'); // async function getUser(name) {
 //     const response = await axios.get('https://pixabay.com/api/?key=24625422-32b02834f3df76db1a58654ff', {
 //       params: {
 //        q: `${name}`,
@@ -3160,10 +3149,14 @@ function onFormSubmit(e) {
   e.preventDefault();
   var getValue = e.currentTarget.elements.searchQuery.value;
   console.log(getValue);
+  getUser(getValue).then(function (response) {
+    return console.log(response);
+  });
   form.reset();
-  getUser(getValue);
 } // ===========================================
 
+
+var count = 1;
 
 function getUser(_x) {
   return _getUser.apply(this, arguments);
@@ -3171,37 +3164,37 @@ function getUser(_x) {
 
 function _getUser() {
   _getUser = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(name) {
-    var response, resOfRespons;
+    var page,
+        response,
+        resOfRespons,
+        _args = arguments;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
+            page = _args.length > 1 && _args[1] !== undefined ? _args[1] : 1;
+            _context.next = 3;
             return _axios.default.get('https://pixabay.com/api/?key=24625422-32b02834f3df76db1a58654ff', {
               params: {
                 q: "".concat(name),
                 image_type: 'photo',
                 orientation: 'horizontal',
                 safesearch: 'true',
-                //   page: `${page}`,
-                page: 1,
+                page: "".concat(page),
+                // page: 1,
                 per_page: 40
               }
             });
 
-          case 2:
+          case 3:
             response = _context.sent;
             console.log(response);
             resOfRespons = response.data.hits;
-            console.log(resOfRespons); // return resOfRespons;
-            //   if (resOfRespons.length === 0) {
-            //      Notiflix.Notify.failure('Oops, there is no country with that name')
-            //   }
+            console.log(resOfRespons);
+            renderImage(resOfRespons);
+            return _context.abrupt("return", resOfRespons);
 
-            renderImage(resOfRespons); //  Notiflix.Notify.failure('Oops, there is no country with that name')
-            //   imageOfLightbox();
-
-          case 7:
+          case 9:
           case "end":
             return _context.stop();
         }
@@ -3212,6 +3205,18 @@ function _getUser() {
 }
 
 ;
+btn.addEventListener('click', onAddPage);
+
+function onAddPage() {
+  count++;
+  getUser('cat', count).then(function (img) {
+    console.log(img);
+    var resImg = img.reduce(function (acc, el) {
+      return acc += "\n<div class=\"photo-card\">\n<a href=\"".concat(el.largeImageURL, "\">\n  <img src=").concat(el.webformatURL, " alt=").concat(el.tags, " loading=\"lazy\" width=\"250\" height = \"180\" class = \"image\"/>\n  </a>\n  <div class=\"info\">\n    <p class=\"info-item\">\n      <b>Likes ").concat(el.likes, "</b>\n    </p>\n    <p class=\"info-item\">\n      <b>Views ").concat(el.views, "</b>\n    </p>\n    <p class=\"info-item\">\n      <b>Comments ").concat(el.comments, "</b>\n    </p>\n    <p class=\"info-item\">\n      <b>Downloads ").concat(el.downloads, "</b>\n    </p>\n  </div>\n</div>\n\n    ");
+    }, '');
+    divEl.insertAdjacentHTML('beforeend', resImg); // divEl.innerHTML = resImg;
+  });
+}
 
 function renderImage(data) {
   //   getUser().then(response => console.log(response))
@@ -3249,7 +3254,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59402" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62367" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

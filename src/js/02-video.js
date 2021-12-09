@@ -62,25 +62,10 @@ import { async } from 'regenerator-runtime';
 
 
 
-// const onEntry = entries => {
-    
-//     entries.forEach(entry => {
-//         if (entry.isIntersecting && photoApiService.query !== '') {
-//             photoApiService.fetchPhoto().then(renderCardMarkup)
-//         }
-//     });
-// }
-// const options = {
-//     rootMargin: '200px'
-// }
-
-
-// const observer = new IntersectionObserver(onEntry, options)
-
-// observer.observe(refs.divEl)
 const gallery = document.querySelector('.gallery');
 const form = document.getElementById('search-form');
 const divEl = document.querySelector('.divEl');
+const btn = document.querySelector('.load-more');
 
 // async function getUser(name) {
   
@@ -130,17 +115,17 @@ function onFormSubmit(e) {
    e.preventDefault();
    const getValue = e.currentTarget.elements.searchQuery.value;
    console.log(getValue);
-  form.reset();
-
    
-  getUser(getValue);
- 
+   
+   getUser(getValue).then(response => console.log(response))
+   
+   form.reset();
   
 }
 
 // ===========================================
-
-async function getUser(name) {
+let count = 1;
+async function getUser(name, page = 1) {
  
     const response = await axios.get('https://pixabay.com/api/?key=24625422-32b02834f3df76db1a58654ff', {
       params: {
@@ -148,21 +133,23 @@ async function getUser(name) {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: 'true',
-      //   page: `${page}`,
-          page: 1,
+        page: `${page}`,
+          // page: 1,
         per_page: 40,  
       },
     });
   console.log(response);
     const resOfRespons = response.data.hits;
   console.log(resOfRespons);
+  renderImage(resOfRespons);
+  return resOfRespons;
    // return resOfRespons;
     
    //   if (resOfRespons.length === 0) {
    //      Notiflix.Notify.failure('Oops, there is no country with that name')
    //   }
      
-  renderImage(resOfRespons);
+  
  
  
    //  Notiflix.Notify.failure('Oops, there is no country with that name')
@@ -171,7 +158,40 @@ async function getUser(name) {
 
 };
 
+btn.addEventListener('click', onAddPage);
 
+function onAddPage() {
+  count++;
+ 
+  getUser('cat', count)
+    .then(img => {
+    console.log(img);
+    const resImg = img.reduce((acc, el) => (acc += `
+<div class="photo-card">
+<a href="${el.largeImageURL}">
+  <img src=${el.webformatURL} alt=${el.tags} loading="lazy" width="250" height = "180" class = "image"/>
+  </a>
+  <div class="info">
+    <p class="info-item">
+      <b>Likes ${el.likes}</b>
+    </p>
+    <p class="info-item">
+      <b>Views ${el.views}</b>
+    </p>
+    <p class="info-item">
+      <b>Comments ${el.comments}</b>
+    </p>
+    <p class="info-item">
+      <b>Downloads ${el.downloads}</b>
+    </p>
+  </div>
+</div>
+
+    `), '')
+    divEl.insertAdjacentHTML('beforeend', resImg);
+      // divEl.innerHTML = resImg;
+  })
+ }
 
   function renderImage(data) {
    //   getUser().then(response => console.log(response))
@@ -200,9 +220,11 @@ async function getUser(name) {
     `), '')
     
     gallery.innerHTML = res;
+    
 }
 
 // renderImage();
+
 
 // =============================================
 
