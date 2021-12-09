@@ -6,6 +6,9 @@ import car from '../css/car.css'
 import axios from 'axios';
 import 'regenerator-runtime/runtime'
 import { async } from 'regenerator-runtime';
+import { Api } from '../servises/api.js';
+const servises = new Api();
+
 // const logMessage = () => {
 //    console.log('Лог при визове функції через 3 сек');
 // };
@@ -108,23 +111,29 @@ const btn = document.querySelector('.load-more');
 //  imageOfLightbox();
 // }
 
-
+// let getValue;
 form.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(e) {
    e.preventDefault();
-   const getValue = e.currentTarget.elements.searchQuery.value;
-   console.log(getValue);
+  const  getValue = e.currentTarget.elements.searchQuery.value;
+  console.log(getValue);
+  servises.saveValue(getValue);
    
    
    getUser(getValue).then(response => console.log(response))
    
-   form.reset();
+  form.reset();
+  cliarePage();
+  // servises.nextPage();
   
 }
+function cliarePage() {
+  divEl.innerHTML = '';
+ }
 
 // ===========================================
-let count = 1;
+
 async function getUser(name, page = 1) {
  
     const response = await axios.get('https://pixabay.com/api/?key=24625422-32b02834f3df76db1a58654ff', {
@@ -134,7 +143,6 @@ async function getUser(name, page = 1) {
         orientation: 'horizontal',
         safesearch: 'true',
         page: `${page}`,
-          // page: 1,
         per_page: 40,  
       },
     });
@@ -158,12 +166,15 @@ async function getUser(name, page = 1) {
 
 };
 
+
 btn.addEventListener('click', onAddPage);
 
 function onAddPage() {
-  count++;
+  console.log(servises.getValue());
+  const convejValue = servises.getValue();
+  servises.savePage();
  
-  getUser('cat', count)
+  getUser(convejValue, servises.getPage())
     .then(img => {
     console.log(img);
     const resImg = img.reduce((acc, el) => (acc += `

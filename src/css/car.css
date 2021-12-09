@@ -21,7 +21,7 @@
   display: grid;
   grid-template-columns: repeat(4, 270px);
   gap: 30px;
-  margin-top: 40px;
+
   justify-content: center;
   padding-top: 20px;
   background-color: blue;
@@ -69,7 +69,7 @@
   display: grid;
   grid-template-columns: repeat(4, 270px);
   gap: 30px;
-  margin-top: 40px;
+
   justify-content: center;
   padding-top: 20px;
   background-color: blue;

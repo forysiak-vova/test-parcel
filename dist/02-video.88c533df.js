@@ -3047,6 +3047,85 @@ try {
   }
 }
 
+},{}],"servises/api.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Api = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+// import axios from 'axios';
+var Api = /*#__PURE__*/function () {
+  function Api() {
+    _classCallCheck(this, Api);
+
+    this.page = 1;
+    this.searchValue = '';
+  }
+
+  _createClass(Api, [{
+    key: "getValue",
+    value: function getValue() {
+      return this.searchValue;
+    }
+  }, {
+    key: "saveValue",
+    value: function saveValue(value) {
+      if (this.searchValue !== value) {
+        this.page = 1;
+      }
+
+      this.searchValue = value;
+    }
+  }, {
+    key: "getPage",
+    value: function getPage() {
+      return this.page;
+    }
+  }, {
+    key: "savePage",
+    value: function savePage() {
+      this.page = this.page + 1;
+    }
+  }, {
+    key: "nextPage",
+    value: function nextPage() {} //    async getUser(name, page = 1) {
+    //     const response = await axios.get('https://pixabay.com/api/?key=24625422-32b02834f3df76db1a58654ff', {
+    //       params: {
+    //        q: `${name}`,
+    //         image_type: 'photo',
+    //         orientation: 'horizontal',
+    //         safesearch: 'true',
+    //         page: `${page}`,
+    //         per_page: 40,  
+    //       },
+    //     });
+    //   console.log(response);
+    //     const resOfRespons = response.data.hits;
+    //   console.log(resOfRespons);
+    //   renderImage(resOfRespons);
+    //   return resOfRespons;
+    // return resOfRespons;
+    //   if (resOfRespons.length === 0) {
+    //      Notiflix.Notify.failure('Oops, there is no country with that name')
+    //   }
+    //  Notiflix.Notify.failure('Oops, there is no country with that name')
+    //   imageOfLightbox();
+    // };
+
+  }]);
+
+  return Api;
+}();
+
+exports.Api = Api;
 },{}],"js/02-video.js":[function(require,module,exports) {
 "use strict";
 
@@ -3060,13 +3139,15 @@ require("regenerator-runtime/runtime");
 
 var _regeneratorRuntime = require("regenerator-runtime");
 
+var _api = require("../servises/api.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-// const logMessage = () => {
+var servises = new _api.Api(); // const logMessage = () => {
 //    console.log('Лог при визове функції через 3 сек');
 // };
 // console.log('До визова функції setTimeout');
@@ -3110,6 +3191,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //    .then(response => {
 //       console.log(response);
 //    })
+
 var gallery = document.querySelector('.gallery');
 var form = document.getElementById('search-form');
 var divEl = document.querySelector('.divEl');
@@ -3142,6 +3224,7 @@ var btn = document.querySelector('.load-more'); // async function getUser(name) 
 //   }
 //  imageOfLightbox();
 // }
+// let getValue;
 
 form.addEventListener('submit', onFormSubmit);
 
@@ -3149,14 +3232,18 @@ function onFormSubmit(e) {
   e.preventDefault();
   var getValue = e.currentTarget.elements.searchQuery.value;
   console.log(getValue);
+  servises.saveValue(getValue);
   getUser(getValue).then(function (response) {
     return console.log(response);
   });
   form.reset();
+  cliarePage(); // servises.nextPage();
+}
+
+function cliarePage() {
+  divEl.innerHTML = '';
 } // ===========================================
 
-
-var count = 1;
 
 function getUser(_x) {
   return _getUser.apply(this, arguments);
@@ -3181,7 +3268,6 @@ function _getUser() {
                 orientation: 'horizontal',
                 safesearch: 'true',
                 page: "".concat(page),
-                // page: 1,
                 per_page: 40
               }
             });
@@ -3208,8 +3294,10 @@ function _getUser() {
 btn.addEventListener('click', onAddPage);
 
 function onAddPage() {
-  count++;
-  getUser('cat', count).then(function (img) {
+  console.log(servises.getValue());
+  var convejValue = servises.getValue();
+  servises.savePage();
+  getUser(convejValue, servises.getPage()).then(function (img) {
     console.log(img);
     var resImg = img.reduce(function (acc, el) {
       return acc += "\n<div class=\"photo-card\">\n<a href=\"".concat(el.largeImageURL, "\">\n  <img src=").concat(el.webformatURL, " alt=").concat(el.tags, " loading=\"lazy\" width=\"250\" height = \"180\" class = \"image\"/>\n  </a>\n  <div class=\"info\">\n    <p class=\"info-item\">\n      <b>Likes ").concat(el.likes, "</b>\n    </p>\n    <p class=\"info-item\">\n      <b>Views ").concat(el.views, "</b>\n    </p>\n    <p class=\"info-item\">\n      <b>Comments ").concat(el.comments, "</b>\n    </p>\n    <p class=\"info-item\">\n      <b>Downloads ").concat(el.downloads, "</b>\n    </p>\n  </div>\n</div>\n\n    ");
@@ -3226,7 +3314,7 @@ function renderImage(data) {
   gallery.innerHTML = res;
 } // renderImage();
 // =============================================
-},{"../css/common.css":"css/common.css","../css/car.css":"css/car.css","axios":"../node_modules/axios/index.js","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","regenerator-runtime":"../node_modules/regenerator-runtime/runtime.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../css/common.css":"css/common.css","../css/car.css":"css/car.css","axios":"../node_modules/axios/index.js","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","regenerator-runtime":"../node_modules/regenerator-runtime/runtime.js","../servises/api.js":"servises/api.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -3254,7 +3342,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56412" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61045" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
