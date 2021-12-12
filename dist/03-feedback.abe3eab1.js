@@ -807,52 +807,51 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //      refs.input.value = savedMessage;
 //    };
 // };
-// ======================================
-var formData = {};
-var refs = {
-  form: document.querySelector('.feedback-form'),
-  textarea: document.querySelector('.feedback-form textarea'),
-  input: document.querySelector('.feedback-form input')
-};
-refs.form.addEventListener('submit', (0, _lodash.default)(onFormSubmit, 500));
-refs.form.addEventListener('input', (0, _lodash.default)(onFormInput, 500));
-
-function onFormInput(e) {
-  formData[e.target.name] = e.target.value;
-  localStorage.setItem('feedback-form-state', JSON.stringify(formData));
-  var resData = new FormData(e);
-  resData.array.forEach(function (element) {});
+// ====================================== ФІТБЕК ФОРМ =====================================
+// const formData = { };
+// const refs = {
+//    form: document.querySelector('.feedback-form'),
+//    textarea: document.querySelector('.feedback-form textarea'),
+//    input: document.querySelector('.feedback-form input')
+// };
+// refs.form.addEventListener('submit', throttle(onFormSubmit, 500));
+// refs.form.addEventListener('input', throttle(onFormInput, 500));
+// function onFormInput(e) {
+//     formData[e.target.name] = e.target.value;
+//    localStorage.setItem('feedback-form-state', JSON.stringify(formData));
+//    const resData = new FormData(e);
+//    resData.array.forEach(element => {
+//    });
+// };
+// populateTexterea();
+// function onFormSubmit(e) {
+//    e.preventDefault();
+//    const feedbackForm = localStorage.getItem('feedback-form-state');
+//    const parsForm = JSON.parse(feedbackForm);
+//    console.log(parsForm);
+//    // console.log(localStorage.getItem('feedback-form-state'));
+//    e.currentTarget.reset();
+//    localStorage.removeItem('feedback-form-state');
+// };
+// function populateTexterea(e) {
+//    const savedMessage = localStorage.getItem('feedback-form-state');
+//    const localString = JSON.parse(savedMessage);
+//    console.log(localString);
+//     if (savedMessage) {
+//       refs.textarea.value = savedMessage;
+//      refs.input.value = savedMessage;
+//    };
+// };
+// ====================================================== ASYNC AWAIT (firebase)===============================================================
+function getFirebase() {
+  return fetch('https://technicall-default-rtdb.europe-west1.firebasedatabase.app/users.json').then(function (response) {
+    return response;
+  });
 }
 
-;
-populateTexterea();
-
-function onFormSubmit(e) {
-  e.preventDefault();
-  var feedbackForm = localStorage.getItem('feedback-form-state');
-  var parsForm = JSON.parse(feedbackForm);
-  console.log(parsForm); // console.log(localStorage.getItem('feedback-form-state'));
-
-  e.currentTarget.reset();
-  localStorage.removeItem('feedback-form-state');
-}
-
-;
-
-function populateTexterea(e) {
-  var savedMessage = localStorage.getItem('feedback-form-state');
-  var localString = JSON.parse(savedMessage);
-  console.log(localString);
-
-  if (savedMessage) {
-    refs.textarea.value = savedMessage;
-    refs.input.value = savedMessage;
-  }
-
-  ;
-}
-
-;
+getFirebase().then(function (x) {
+  return console.log(x);
+});
 },{"lodash.throttle":"../node_modules/lodash.throttle/index.js","../css/common.css":"css/common.css","../css/03-feedback.css":"css/03-feedback.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -881,7 +880,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53101" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58531" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
