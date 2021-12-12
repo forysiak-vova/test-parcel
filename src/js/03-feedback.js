@@ -1,6 +1,8 @@
 import throttle from 'lodash.throttle';
 import '../css/common.css';
 import '../css/03-feedback.css'
+import axios from 'axios';
+import  {async}  from 'regenerator-runtime';
 
 // const formData = { };
 // const refs = {
@@ -281,10 +283,41 @@ import '../css/03-feedback.css'
 
 
 
-function getFirebase() {
-   return fetch('https://technicall-default-rtdb.europe-west1.firebasedatabase.app/users.json').then(response => {
-      return response
-      
-   })
+const createUser =  options => {
+return  axios.post(`${process.env.NODE_ENV_BASE_URL}/users.json`, options)
+   
 }
-getFirebase().then(x => console.log(x))
+const getUserInfo =  id => {
+return  axios.get(`${process.env.NODE_ENV_BASE_URL}/users/${id}.json`)
+   
+}
+
+
+// createUser({
+//    "name": "admin666666",
+//    "languege": "uk",
+//    "skill": 'administration66666'
+// }).then(data => getUserInfo(data.data.name).then(user => console.log(user)));
+
+// async function renderUser() {
+// const user = await createUser({
+//    "name": "admin2",
+//    "languege": "uk",
+//    "skill": 'administration'
+// })
+// console.log(user)
+// }
+//  renderUser()
+
+const render = async () => { 
+   const {data}  = await createUser({
+      name: "Pimky",
+      language: "ger",
+      skill: "sass"
+   });
+   console.log(data)
+   const info = await getUserInfo(data.name);
+   console.log(info);
+}
+// console.log(process.env.NODE_ENV_BASE_URL);
+render()

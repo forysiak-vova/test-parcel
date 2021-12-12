@@ -11,7 +11,7 @@
   height: 40px;
   padding: 5px;
 
-  // padding: 5px calc(50% - 120px);
+  /* // padding: 5px calc(50% - 120px); */
   background-color: blue;
 }
 .search-input {
