@@ -283,16 +283,16 @@ import  {async}  from 'regenerator-runtime';
 
 
 
-const createUser =  options => {
-return  axios.post(`${process.env.NODE_ENV_BASE_URL}/users.json`, options)
+// const createUser =  options => {
+// return  axios.post(`${process.env.NODE_ENV_BASE_URL}/users.json`, options)
    
-}
-const getUserInfo =  id => {
-return  axios.get(`${process.env.NODE_ENV_BASE_URL}/users/${id}.json`)
+// }
+// const getUserInfo =  id => {
+// return  axios.get(`${process.env.NODE_ENV_BASE_URL}/users/${id}.json`)
    
-}
+// }
 
-
+// =======================================================================================================================================
 // createUser({
 //    "name": "admin666666",
 //    "languege": "uk",
@@ -309,15 +309,15 @@ return  axios.get(`${process.env.NODE_ENV_BASE_URL}/users/${id}.json`)
 // }
 //  renderUser()
 
-const render = async () => { 
-   const {data}  = await createUser({
-      name: "Pimky",
-      language: "ger",
-      skill: "sass"
-   });
-   console.log(data)
-   const info = await getUserInfo(data.name);
-   console.log(info);
-}
-// console.log(process.env.NODE_ENV_BASE_URL);
-render()
+// const render = async () => { 
+//    const {data}  = await createUser({
+//       name: "Pimky",
+//       language: "ger",
+//       skill: "sass"
+//    });
+//    console.log(data)
+//    const info = await getUserInfo(data.name);
+//    console.log(info);
+// }
+// // console.log(process.env.NODE_ENV_BASE_URL);
+// render()
