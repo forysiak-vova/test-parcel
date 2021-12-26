@@ -49,5 +49,9 @@ textarea {
   resize: none;
 }
 
+.titleEl {
+  display: flex;
+}
+
 
 /*# sourceMappingURL=/03-feedback.abe3eab1.css.map */

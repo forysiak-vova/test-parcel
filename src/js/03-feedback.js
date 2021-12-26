@@ -309,7 +309,7 @@ import  {async}  from 'regenerator-runtime';
 // }
 //  renderUser()
 
-// const render = async () => { 
+// const render = async () => {
 //    const {data}  = await createUser({
 //       name: "Pimky",
 //       language: "ger",
@@ -321,3 +321,15 @@ import  {async}  from 'regenerator-runtime';
 // }
 // // console.log(process.env.NODE_ENV_BASE_URL);
 // render()
+const divEL = document.querySelector('.titleEl');
+
+
+
+fetch("https://api.punkapi.com/v2/beers?page=1&per_page=5").then(response => response.json())
+   .then(renderBeer)
+
+function renderBeer(data) { 
+   const res = data.reduce(((acc, el) => (acc += `<div><p>${el.name}</p><img src = "${el.image_url}" width = 120 height = 200><p>${el.description}</p> </div>`)), '')
+   divEL.innerHTML = res;
+   console.log(data)
+}
