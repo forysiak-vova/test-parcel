@@ -1,34 +1,34 @@
 // import axios from 'axios';
-export class Api { 
+// export class Api {
    
-   constructor() { 
-      this.page = 1;
-      this.searchValue = '';
-   }
+//    constructor() {
+//       this.page = 1;
+//       this.searchValue = '';
+//    }
 
-   getValue() {
-      return this.searchValue;
-   }
+//    getValue() {
+//       return this.searchValue;
+//    }
    
-   saveValue(value) { 
-      if (this.searchValue !== value) { 
-         this.page = 1;
-       }
-      this.searchValue = value;
+//    saveValue(value) {
+//       if (this.searchValue !== value) {
+//          this.page = 1;
+//        }
+//       this.searchValue = value;
        
-   }
+//    }
    
 
-   getPage() {
-      return this.page;
-   }
+//    getPage() {
+//       return this.page;
+//    }
    
-   savePage() { 
-      this.page = this.page + 1; 
-   }
-   nextPage() {
+//    savePage() {
+//       this.page = this.page + 1;
+//    }
+//    nextPage() {
     
-   }
+//    }
 //    async getUser(name, page = 1) {
  
 //     const response = await axios.get('https://pixabay.com/api/?key=24625422-32b02834f3df76db1a58654ff', {
@@ -38,7 +38,7 @@ export class Api {
 //         orientation: 'horizontal',
 //         safesearch: 'true',
 //         page: `${page}`,
-//         per_page: 40,  
+//         per_page: 40,
 //       },
 //     });
 //   console.log(response);
@@ -61,4 +61,18 @@ export class Api {
 
 // };
    
+// }
+
+
+export default function server(url, settings = {}) {
+   const defaultParth = 'https://api.themoviedb.org/3/movie';
+   const imageParth = 'https://image.tmdb.org/t/p/w500';
+   const API_KEY = '0754829cbe2d4a3d2043b315bf2671de';
+   const language = 'ru';
+   const _url = `${defaultParth}/${url}?api_key=${API_KEY}&language=${language}region=${language}`;
+   return fetch(_url).then(response => { return response.json() });
 }
+
+// export default servises(url){
+//    fetch()
+// }

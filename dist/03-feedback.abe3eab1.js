@@ -3489,6 +3489,76 @@ try {
   }
 }
 
+},{}],"servises/api.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = server;
+
+// import axios from 'axios';
+// export class Api {
+//    constructor() {
+//       this.page = 1;
+//       this.searchValue = '';
+//    }
+//    getValue() {
+//       return this.searchValue;
+//    }
+//    saveValue(value) {
+//       if (this.searchValue !== value) {
+//          this.page = 1;
+//        }
+//       this.searchValue = value;
+//    }
+//    getPage() {
+//       return this.page;
+//    }
+//    savePage() {
+//       this.page = this.page + 1;
+//    }
+//    nextPage() {
+//    }
+//    async getUser(name, page = 1) {
+//     const response = await axios.get('https://pixabay.com/api/?key=24625422-32b02834f3df76db1a58654ff', {
+//       params: {
+//        q: `${name}`,
+//         image_type: 'photo',
+//         orientation: 'horizontal',
+//         safesearch: 'true',
+//         page: `${page}`,
+//         per_page: 40,
+//       },
+//     });
+//   console.log(response);
+//     const resOfRespons = response.data.hits;
+//   console.log(resOfRespons);
+//   renderImage(resOfRespons);
+//   return resOfRespons;
+// return resOfRespons;
+//   if (resOfRespons.length === 0) {
+//      Notiflix.Notify.failure('Oops, there is no country with that name')
+//   }
+//  Notiflix.Notify.failure('Oops, there is no country with that name')
+//   imageOfLightbox();
+// };
+// }
+function server(url) {
+  var settings = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var defaultParth = 'https://api.themoviedb.org/3/movie';
+  var imageParth = 'https://image.tmdb.org/t/p/w500';
+  var API_KEY = '0754829cbe2d4a3d2043b315bf2671de';
+  var language = 'ru';
+
+  var _url = "".concat(defaultParth, "/").concat(url, "?api_key=").concat(API_KEY, "&language=").concat(language, "region=").concat(language);
+
+  return fetch(_url).then(function (response) {
+    return response.json();
+  });
+} // export default servises(url){
+//    fetch()
+// }
 },{}],"js/03-feedback.js":[function(require,module,exports) {
 "use strict";
 
@@ -3501,6 +3571,8 @@ require("../css/03-feedback.css");
 var _axios = _interopRequireDefault(require("axios"));
 
 var _regeneratorRuntime = require("regenerator-runtime");
+
+var _api = _interopRequireDefault(require("../servises/api"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3733,19 +3805,37 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // }
 // // console.log(process.env.NODE_ENV_BASE_URL);
 // render()
+// ===========================================================   ФЕЧ ЗАПРОС НА ТЕСТОВЕ ЗАВДАННЯ ДО ВРОЦЛАВА ПУНК АПІАЙ ====================
+// const divEL = document.querySelector('.titleEl');
+// fetch("https://api.punkapi.com/v2/beers?page=1&per_page=5").then(response => response.json())
+//    .then(renderBeer)
+// function renderBeer(data) {
+//    const res = data.reduce(((acc, el) => (acc += `<div><p>${el.name}</p><img src = "${el.image_url}" width = 120 height = 200><p>${el.description}</p> </div>`)), '')
+//    divEL.innerHTML = res;
+//    console.log(data)
+// }
+// ========================================================================================================================================================
+// console.log(servises)
+// const input = document.getElementById('input');
+// input.addEventListener('submit', onInputValue);
+// function onInputValue(e) {
+//    e.preventDefault();
+//    const valueInput = e.currentTarget.elements.text.value;
+//    console.log(valueInput);
+//    servises(valueInput).then(data => {console.log(data)})
+// }
 var divEL = document.querySelector('.titleEl');
-fetch("https://api.punkapi.com/v2/beers?page=1&per_page=5").then(function (response) {
-  return response.json();
-}).then(renderBeer);
-
-function renderBeer(data) {
-  var res = data.reduce(function (acc, el) {
-    return acc += "<div><p>".concat(el.name, "</p><img src = \"").concat(el.image_url, "\" width = 120 height = 200><p>").concat(el.description, "</p> </div>");
+(0, _api.default)('popular').then(function (data) {
+  var rest = data.results;
+  console.log(rest);
+  var url = 'https://image.tmdb.org/t/p/w500';
+  var res = rest.reduce(function (acc, el) {
+    return acc += "<ul class=\"list\"> \n   <li><img src =\"https://image.tmdb.org/t/p/original".concat(el.backdrop_path, "\" width = 100% ></li> \n   <h1 class=\"title\">").concat(el.title, "</h1>\n    </ul>");
   }, '');
   divEL.innerHTML = res;
-  console.log(data);
-}
-},{"lodash.throttle":"../node_modules/lodash.throttle/index.js","../css/common.css":"css/common.css","../css/03-feedback.css":"css/03-feedback.css","axios":"../node_modules/axios/index.js","regenerator-runtime":"../node_modules/regenerator-runtime/runtime.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  console.log(res);
+});
+},{"lodash.throttle":"../node_modules/lodash.throttle/index.js","../css/common.css":"css/common.css","../css/03-feedback.css":"css/03-feedback.css","axios":"../node_modules/axios/index.js","regenerator-runtime":"../node_modules/regenerator-runtime/runtime.js","../servises/api":"servises/api.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -3773,7 +3863,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56610" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64288" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

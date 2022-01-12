@@ -3053,79 +3053,70 @@ try {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Api = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+exports.default = server;
 
 // import axios from 'axios';
-var Api = /*#__PURE__*/function () {
-  function Api() {
-    _classCallCheck(this, Api);
+// export class Api {
+//    constructor() {
+//       this.page = 1;
+//       this.searchValue = '';
+//    }
+//    getValue() {
+//       return this.searchValue;
+//    }
+//    saveValue(value) {
+//       if (this.searchValue !== value) {
+//          this.page = 1;
+//        }
+//       this.searchValue = value;
+//    }
+//    getPage() {
+//       return this.page;
+//    }
+//    savePage() {
+//       this.page = this.page + 1;
+//    }
+//    nextPage() {
+//    }
+//    async getUser(name, page = 1) {
+//     const response = await axios.get('https://pixabay.com/api/?key=24625422-32b02834f3df76db1a58654ff', {
+//       params: {
+//        q: `${name}`,
+//         image_type: 'photo',
+//         orientation: 'horizontal',
+//         safesearch: 'true',
+//         page: `${page}`,
+//         per_page: 40,
+//       },
+//     });
+//   console.log(response);
+//     const resOfRespons = response.data.hits;
+//   console.log(resOfRespons);
+//   renderImage(resOfRespons);
+//   return resOfRespons;
+// return resOfRespons;
+//   if (resOfRespons.length === 0) {
+//      Notiflix.Notify.failure('Oops, there is no country with that name')
+//   }
+//  Notiflix.Notify.failure('Oops, there is no country with that name')
+//   imageOfLightbox();
+// };
+// }
+function server(url) {
+  var settings = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var defaultParth = 'https://api.themoviedb.org/3/movie';
+  var imageParth = 'https://image.tmdb.org/t/p/w500';
+  var API_KEY = '0754829cbe2d4a3d2043b315bf2671de';
+  var language = 'ru';
 
-    this.page = 1;
-    this.searchValue = '';
-  }
+  var _url = "".concat(defaultParth, "/").concat(url, "?api_key=").concat(API_KEY, "&language=").concat(language, "region=").concat(language);
 
-  _createClass(Api, [{
-    key: "getValue",
-    value: function getValue() {
-      return this.searchValue;
-    }
-  }, {
-    key: "saveValue",
-    value: function saveValue(value) {
-      if (this.searchValue !== value) {
-        this.page = 1;
-      }
-
-      this.searchValue = value;
-    }
-  }, {
-    key: "getPage",
-    value: function getPage() {
-      return this.page;
-    }
-  }, {
-    key: "savePage",
-    value: function savePage() {
-      this.page = this.page + 1;
-    }
-  }, {
-    key: "nextPage",
-    value: function nextPage() {} //    async getUser(name, page = 1) {
-    //     const response = await axios.get('https://pixabay.com/api/?key=24625422-32b02834f3df76db1a58654ff', {
-    //       params: {
-    //        q: `${name}`,
-    //         image_type: 'photo',
-    //         orientation: 'horizontal',
-    //         safesearch: 'true',
-    //         page: `${page}`,
-    //         per_page: 40,  
-    //       },
-    //     });
-    //   console.log(response);
-    //     const resOfRespons = response.data.hits;
-    //   console.log(resOfRespons);
-    //   renderImage(resOfRespons);
-    //   return resOfRespons;
-    // return resOfRespons;
-    //   if (resOfRespons.length === 0) {
-    //      Notiflix.Notify.failure('Oops, there is no country with that name')
-    //   }
-    //  Notiflix.Notify.failure('Oops, there is no country with that name')
-    //   imageOfLightbox();
-    // };
-
-  }]);
-
-  return Api;
-}();
-
-exports.Api = Api;
+  return fetch(_url).then(function (response) {
+    return response.json();
+  });
+} // export default servises(url){
+//    fetch()
+// }
 },{}],"js/02-video.js":[function(require,module,exports) {
 "use strict";
 
@@ -3342,7 +3333,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56610" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64288" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

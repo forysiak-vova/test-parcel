@@ -2,7 +2,8 @@ import throttle from 'lodash.throttle';
 import '../css/common.css';
 import '../css/03-feedback.css'
 import axios from 'axios';
-import  {async}  from 'regenerator-runtime';
+import { async } from 'regenerator-runtime';
+import servises from '../servises/api'
 
 // const formData = { };
 // const refs = {
@@ -321,15 +322,47 @@ import  {async}  from 'regenerator-runtime';
 // }
 // // console.log(process.env.NODE_ENV_BASE_URL);
 // render()
+
+
+// ===========================================================   ФЕЧ ЗАПРОС НА ТЕСТОВЕ ЗАВДАННЯ ДО ВРОЦЛАВА ПУНК АПІАЙ ====================
+// const divEL = document.querySelector('.titleEl');
+
+
+
+// fetch("https://api.punkapi.com/v2/beers?page=1&per_page=5").then(response => response.json())
+//    .then(renderBeer)
+
+// function renderBeer(data) {
+//    const res = data.reduce(((acc, el) => (acc += `<div><p>${el.name}</p><img src = "${el.image_url}" width = 120 height = 200><p>${el.description}</p> </div>`)), '')
+//    divEL.innerHTML = res;
+//    console.log(data)
+// }
+
+// ========================================================================================================================================================
+
+
+// console.log(servises)
+// const input = document.getElementById('input');
+
+// input.addEventListener('submit', onInputValue);
+
+// function onInputValue(e) {
+//    e.preventDefault();
+//    const valueInput = e.currentTarget.elements.text.value;
+//    console.log(valueInput);
+//    servises(valueInput).then(data => {console.log(data)})
+// }
+
 const divEL = document.querySelector('.titleEl');
 
-
-
-fetch("https://api.punkapi.com/v2/beers?page=1&per_page=5").then(response => response.json())
-   .then(renderBeer)
-
-function renderBeer(data) { 
-   const res = data.reduce(((acc, el) => (acc += `<div><p>${el.name}</p><img src = "${el.image_url}" width = 120 height = 200><p>${el.description}</p> </div>`)), '')
+servises('popular').then(data => {
+   const rest = data.results
+   console.log(rest)
+   const url = 'https://image.tmdb.org/t/p/w500';
+   const res = rest.reduce(((acc, el) => (acc += `<ul class="list"> 
+   <li><img src ="https://image.tmdb.org/t/p/original${el.backdrop_path}" width = 100% ></li> 
+   <h1 class="title">${el.title}</h1>
+    </ul>`)), '');
    divEL.innerHTML = res;
-   console.log(data)
-}
+   console.log(res)
+})
