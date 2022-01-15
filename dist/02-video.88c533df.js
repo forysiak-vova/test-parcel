@@ -3104,19 +3104,17 @@ exports.default = server;
 // }
 function server(url) {
   var settings = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var defaultParth = 'https://api.themoviedb.org/3/movie';
+  var defaultParth = 'https://api.themoviedb.org/3/trending/';
   var imageParth = 'https://image.tmdb.org/t/p/w500';
   var API_KEY = '0754829cbe2d4a3d2043b315bf2671de';
   var language = 'ru';
 
-  var _url = "".concat(defaultParth, "/").concat(url, "?api_key=").concat(API_KEY, "&language=").concat(language, "region=").concat(language);
+  var _url = "".concat(defaultParth, "/").concat(url, "/day?api_key=").concat(API_KEY, "&page=7&language=").concat(language, "region=").concat(language);
 
   return fetch(_url).then(function (response) {
     return response.json();
   });
-} // export default servises(url){
-//    fetch()
-// }
+}
 },{}],"js/02-video.js":[function(require,module,exports) {
 "use strict";
 
@@ -3333,7 +3331,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64288" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65125" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

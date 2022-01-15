@@ -3546,19 +3546,17 @@ exports.default = server;
 // }
 function server(url) {
   var settings = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var defaultParth = 'https://api.themoviedb.org/3/movie';
+  var defaultParth = 'https://api.themoviedb.org/3/trending/';
   var imageParth = 'https://image.tmdb.org/t/p/w500';
   var API_KEY = '0754829cbe2d4a3d2043b315bf2671de';
   var language = 'ru';
 
-  var _url = "".concat(defaultParth, "/").concat(url, "?api_key=").concat(API_KEY, "&language=").concat(language, "region=").concat(language);
+  var _url = "".concat(defaultParth, "/").concat(url, "/day?api_key=").concat(API_KEY, "&page=7&language=").concat(language, "region=").concat(language);
 
   return fetch(_url).then(function (response) {
     return response.json();
   });
-} // export default servises(url){
-//    fetch()
-// }
+}
 },{}],"js/03-feedback.js":[function(require,module,exports) {
 "use strict";
 
@@ -3825,15 +3823,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //    servises(valueInput).then(data => {console.log(data)})
 // }
 var divEL = document.querySelector('.titleEl');
-(0, _api.default)('popular').then(function (data) {
+(0, _api.default)('all').then(function (data) {
+  console.log(data);
   var rest = data.results;
-  console.log(rest);
-  var url = 'https://image.tmdb.org/t/p/w500';
+  console.log(rest); // const url = 'https://image.tmdb.org/t/p/w500';
+
   var res = rest.reduce(function (acc, el) {
-    return acc += "<ul class=\"list\"> \n   <li><img src =\"https://image.tmdb.org/t/p/original".concat(el.backdrop_path, "\" width = 100% ></li> \n   <h1 class=\"title\">").concat(el.title, "</h1>\n    </ul>");
+    return acc += "<ul class=\"list\"> \n   <li><img src =\"https://image.tmdb.org/t/p/original".concat(el.backdrop_path, "\" width = 100% ></li> \n   <h1 class=\"title\">").concat(el.original_title, "</h1>\n   <p>").concat(el.release_date, "</p>\n    </ul>");
   }, '');
   divEL.innerHTML = res;
-  console.log(res);
 });
 },{"lodash.throttle":"../node_modules/lodash.throttle/index.js","../css/common.css":"css/common.css","../css/03-feedback.css":"css/03-feedback.css","axios":"../node_modules/axios/index.js","regenerator-runtime":"../node_modules/regenerator-runtime/runtime.js","../servises/api":"servises/api.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -3863,7 +3861,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64288" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65125" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

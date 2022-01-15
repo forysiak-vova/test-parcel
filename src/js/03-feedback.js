@@ -353,16 +353,29 @@ import servises from '../servises/api'
 //    servises(valueInput).then(data => {console.log(data)})
 // }
 
+
+
+
+
+
+
+
+
+
+
+
 const divEL = document.querySelector('.titleEl');
 
-servises('popular').then(data => {
+servises('all').then(data => {
+   console.log(data)
    const rest = data.results
    console.log(rest)
-   const url = 'https://image.tmdb.org/t/p/w500';
+   // const url = 'https://image.tmdb.org/t/p/w500';
    const res = rest.reduce(((acc, el) => (acc += `<ul class="list"> 
    <li><img src ="https://image.tmdb.org/t/p/original${el.backdrop_path}" width = 100% ></li> 
-   <h1 class="title">${el.title}</h1>
+   <h1 class="title">${el.original_title}</h1>
+   <p>${el.release_date}</p>
     </ul>`)), '');
    divEL.innerHTML = res;
-   console.log(res)
+ 
 })
