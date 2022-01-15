@@ -371,11 +371,18 @@ servises('all').then(data => {
    const rest = data.results
    console.log(rest)
    // const url = 'https://image.tmdb.org/t/p/w500';
-   const res = rest.reduce(((acc, el) => (acc += `<ul class="list"> 
-   <li><img src ="https://image.tmdb.org/t/p/original${el.backdrop_path}" width = 100% ></li> 
+   const res = rest.reduce(((acc, el) => (acc += `<div class="list"> 
+   <a class="link">
+   <div class="class__photo">
+   <img src ="https://image.tmdb.org/t/p/w500${el.poster_path}" class="photo">
+   </div>
+ 
+  <div>
    <h1 class="title">${el.original_title}</h1>
    <p>${el.release_date}</p>
-    </ul>`)), '');
+  </div>
+    </a> 
+    </div>`)), '');
    divEL.innerHTML = res;
  
 })

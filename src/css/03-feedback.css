@@ -29,16 +29,45 @@ textarea {
 textarea {
   resize: none;
 }
-
+/* ==========================================================================  FILMOTEKA  ================================ */
 .titleEl {
   display: grid;
-  grid-template-columns: repeat(3, 274px);
+  grid-template-columns: repeat(3, 300px);
   gap: 30px;
   justify-content: center;
 }
 .list {
   list-style: none;
+  border-radius: 10px;
+
+  width: 274px;
 }
 .title {
   font-size: 15px;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+/* .link {
+  height: 100%;
+} */
+.photo {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+.button {
+  border-radius: 10px;
+  background-color: red;
+  margin-top: 20px;
+  /* justify-content: center;
+  align-items: center;
+  display: flex; */
+  margin: auto;
+  display: flex;
+}
+.class__photo {
+  height: 398px;
+  width: 100%;
 }

@@ -3551,7 +3551,7 @@ function server(url) {
   var API_KEY = '0754829cbe2d4a3d2043b315bf2671de';
   var language = 'ru';
 
-  var _url = "".concat(defaultParth, "/").concat(url, "/day?api_key=").concat(API_KEY, "&page=7&language=").concat(language, "region=").concat(language);
+  var _url = "".concat(defaultParth, "/").concat(url, "/day?api_key=").concat(API_KEY, "&page=4&language=").concat(language, "region=").concat(language);
 
   return fetch(_url).then(function (response) {
     return response.json();
@@ -3829,7 +3829,7 @@ var divEL = document.querySelector('.titleEl');
   console.log(rest); // const url = 'https://image.tmdb.org/t/p/w500';
 
   var res = rest.reduce(function (acc, el) {
-    return acc += "<ul class=\"list\"> \n   <li><img src =\"https://image.tmdb.org/t/p/original".concat(el.backdrop_path, "\" width = 100% ></li> \n   <h1 class=\"title\">").concat(el.original_title, "</h1>\n   <p>").concat(el.release_date, "</p>\n    </ul>");
+    return acc += "<div class=\"list\"> \n   <a class=\"link\">\n   <div class=\"class__photo\">\n   <img src =\"https://image.tmdb.org/t/p/w500".concat(el.poster_path, "\" class=\"photo\">\n   </div>\n \n  <div>\n   <h1 class=\"title\">").concat(el.original_title, "</h1>\n   <p>").concat(el.release_date, "</p>\n  </div>\n    </a> \n    </div>");
   }, '');
   divEL.innerHTML = res;
 });
@@ -3861,7 +3861,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65125" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49474" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

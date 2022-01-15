@@ -3109,7 +3109,7 @@ function server(url) {
   var API_KEY = '0754829cbe2d4a3d2043b315bf2671de';
   var language = 'ru';
 
-  var _url = "".concat(defaultParth, "/").concat(url, "/day?api_key=").concat(API_KEY, "&page=7&language=").concat(language, "region=").concat(language);
+  var _url = "".concat(defaultParth, "/").concat(url, "/day?api_key=").concat(API_KEY, "&page=4&language=").concat(language, "region=").concat(language);
 
   return fetch(_url).then(function (response) {
     return response.json();
@@ -3331,7 +3331,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65125" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49474" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
