@@ -3551,7 +3551,7 @@ function server(url) {
   var API_KEY = '0754829cbe2d4a3d2043b315bf2671de';
   var language = 'ru';
 
-  var _url = "".concat(defaultParth, "/").concat(url, "/day?api_key=").concat(API_KEY, "&page=4&language=").concat(language, "region=").concat(language);
+  var _url = "".concat(defaultParth, "/").concat(url, "/day?api_key=").concat(API_KEY, "&page=1&language=").concat(language, "region=").concat(language);
 
   return fetch(_url).then(function (response) {
     return response.json();

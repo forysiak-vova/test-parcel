@@ -82,7 +82,7 @@ export default function server(url, settings = {}) {
    const imageParth = 'https://image.tmdb.org/t/p/w500';
    const API_KEY = '0754829cbe2d4a3d2043b315bf2671de';
    const language = 'ru';
-   const _url = `${defaultParth}/${url}/day?api_key=${API_KEY}&page=4&language=${language}region=${language}`;
+   const _url = `${defaultParth}/${url}/day?api_key=${API_KEY}&page=1&language=${language}region=${language}`;
    return fetch(_url).then(response => { return response.json() });
 }
 
