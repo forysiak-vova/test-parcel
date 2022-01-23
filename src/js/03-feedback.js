@@ -362,27 +362,31 @@ import servises from '../servises/api'
 
 
 
+// ======================================== FILMS ===========================================
 
+// const divEL = document.querySelector('.titleEl');
 
-const divEL = document.querySelector('.titleEl');
-
-servises('all').then(data => {
-   console.log(data)
-   const rest = data.results
-   console.log(rest)
-   // const url = 'https://image.tmdb.org/t/p/w500';
-   const res = rest.reduce(((acc, el) => (acc += `<div class="list"> 
-   <a class="link">
-   <div class="class__photo">
-   <img src ="https://image.tmdb.org/t/p/w500${el.poster_path}" class="photo">
-   </div>
+// servises('all').then(data => {
+//    console.log(data)
+//    const rest = data.results
+//    console.log(rest)
+//    // const url = 'https://image.tmdb.org/t/p/w500';
+//    const res = rest.reduce(((acc, el) => (acc += `<div class="list">
+//    <a class="link">
+//    <div class="class__photo">
+//    <img src ="https://image.tmdb.org/t/p/w500${el.poster_path}" class="photo">
+//    </div>
  
-  <div>
-   <h1 class="title">${el.original_title}</h1>
-   <p>${el.release_date}</p>
-  </div>
-    </a> 
-    </div>`)), '');
-   divEL.innerHTML = res;
+//   <div>
+//    <h1 class="title">${el.original_title}</h1>
+//    <p>${el.release_date}</p>
+//   </div>
+//     </a>
+//     </div>`)), '');
+//    divEL.innerHTML = res;
  
-})
+// })
+
+// ===================================================================================================
+
+// ========================================= AVATAR ===================================================
