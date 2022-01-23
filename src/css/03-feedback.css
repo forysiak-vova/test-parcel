@@ -175,7 +175,7 @@ aside:hover .profile-bio {
   text-align: center;
   font-size: 16px;
 }
-
+/* 
 .profile-social-links {
   position: relative;
   margin-top: -540px;
@@ -183,9 +183,9 @@ aside:hover .profile-bio {
   list-style-type: none;
   opacity: 0;
   transition: all ease 0.5s;
-}
+} */
 
-aside:hover .profile-social-links {
+/* aside:hover .profile-social-links {
   margin-left: -30px;
   opacity: 1;
 }
@@ -195,7 +195,7 @@ aside:hover .profile-social-links {
   background: #fff;
   border-radius: 50%;
   padding: 5px;
-}
+} */
 /*PROFILE IMAGE ANIMATE */
 
 @keyframes profile_image {
@@ -481,7 +481,7 @@ aside:hover header h1 {
   }
 }
 
-aside:hover ul li:first-child {
+/* aside:hover ul li:first-child {
   animation: social_animation 2000ms ease-in-out both;
   animation-delay: 0.75s;
 }
@@ -690,4 +690,4 @@ aside:hover ul li:nth-child(3) {
   100% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
   }
-}
+} */
