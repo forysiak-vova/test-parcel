@@ -1,9 +1,9 @@
-import throttle from 'lodash.throttle';
-import '../css/common.css';
-import '../css/03-feedback.css'
-import axios from 'axios';
-import { async } from 'regenerator-runtime';
-import servises from '../servises/api'
+import throttle from "lodash.throttle";
+import "../css/common.css";
+import "../css/03-feedback.css";
+import axios from "axios";
+import { async } from "regenerator-runtime";
+import servises from "../servises/api";
 
 // const formData = { };
 // const refs = {
@@ -16,10 +16,8 @@ import servises from '../servises/api'
 // refs.textarea.addEventListener('input', throttle(onTexareaInput, 500));
 // // refs.input.addEventListener('input', throttle(onInputEmail, 500));
 
-
-
 // refs.form.addEventListener('input', e => {
-   
+
 //    formData[e.target.name] = e.target.name;
 //    console.log(formData);
 
@@ -28,29 +26,26 @@ import servises from '../servises/api'
 
 // populateTexterea();
 
-
 // // function onInputEmail(e) {
 // //    const email = e.target.value;
 // //     localStorage.setItem('feedback-form-state1',  email);
 
-   
 // // };
 
 // function onFormSubmit(e) {
 //    e.preventDefault();
-  
+
 //    e.currentTarget.reset();
 //    localStorage.removeItem('feedback-form-state');
 //    localStorage.removeItem('feedback-form-state1');
 //    console.log('відправляємо форму');
-  
-   
+
 // };
 
 // function onTexareaInput(e) {
 //     const message = e.target.value;
 //    localStorage.setItem('feedback-form-state', message);
- 
+
 // };
 
 // function populateTexterea(e) {
@@ -68,7 +63,7 @@ import servises from '../servises/api'
 //       refs.textarea.value = savedMessage;
 //       //  refs.input.value = saveEmail;
 //    };
- 
+
 // };
 
 // ====================================================================================
@@ -84,26 +79,22 @@ import servises from '../servises/api'
 // refs.textarea.addEventListener('input', throttle(onTexareaInput, 500));
 // // refs.input.addEventListener('input', throttle(onInputEmail, 500));
 
-
-
 // refs.form.addEventListener('input', e => {
-   
+
 //    formData[e.target.name] = e.target.name;
 //    // console.log(formData);
 
 //    localStorage.setItem('feedback-form-state2', JSON.stringify(formData));
 //    // console.log(localStorage.getItem('feedback-form-state2'));
-  
+
 // });
 
 // populateTexterea();
-
 
 // // function onInputEmail(e) {
 // //    const email = e.target.value;
 // //     localStorage.setItem('feedback-form-state1',  email);
 
-   
 // // };
 
 // function onFormSubmit(e) {
@@ -115,14 +106,13 @@ import servises from '../servises/api'
 //      localStorage.removeItem('feedback-form-state');
 //    // localStorage.removeItem('feedback-form-state1');
 //    // console.log('відправляємо форму');
-  
-   
+
 // };
 
 // function onTexareaInput(e) {
 //     const message = e.target.value;
 //    localStorage.setItem('feedback-form-state', message);
- 
+
 // };
 
 // function populateTexterea(e) {
@@ -139,9 +129,9 @@ import servises from '../servises/api'
 //       console.log(savedMessage);
 //       refs.textarea.value = savedMessage;
 //       //  refs.input.value = saveEmail;
-     
+
 //    };
- 
+
 // };
 
 // =================================================================================================
@@ -159,7 +149,7 @@ import servises from '../servises/api'
 // function onFormInput(e) {
 //     formData[e.target.name] = e.target.value;
 //    localStorage.setItem('feedback-form-state', JSON.stringify(formData));
-  
+
 // };
 // populateTexterea();
 // function onFormSubmit(e) {
@@ -174,14 +164,14 @@ import servises from '../servises/api'
 
 // function populateTexterea(e) {
 //    const savedMessage = localStorage.getItem( 'feedback-form-state');
-   
+
 //     if (savedMessage) {
-      
+
 //       refs.textarea.value = savedMessage;
 //      refs.input.value = savedMessage;
-     
+
 //    };
- 
+
 // };
 
 // ==============================================================
@@ -203,10 +193,8 @@ import servises from '../servises/api'
 //    // localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 //    const formData = e.target.value;
 //    localStorage.setItem('feedback-form-state', JSON.stringify(formData));
-  
+
 // };
-
-
 
 // function onFormSubmit(e) {
 //    e.preventDefault();
@@ -225,12 +213,12 @@ import servises from '../servises/api'
 //    // console.log(localString);
 
 //     if (savedMessage) {
-      
+
 //       refs.textarea.value = savedMessage;
 //      refs.input.value = savedMessage;
-     
+
 //    };
- 
+
 // };
 // ====================================== ФІТБЕК ФОРМ =====================================
 
@@ -249,10 +237,9 @@ import servises from '../servises/api'
 //    localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 //    const resData = new FormData(e);
 //    resData.array.forEach(element => {
-      
+
 //    });
-  
-  
+
 // };
 // populateTexterea();
 // function onFormSubmit(e) {
@@ -272,25 +259,23 @@ import servises from '../servises/api'
 //    console.log(localString);
 
 //     if (savedMessage) {
-      
+
 //       refs.textarea.value = savedMessage;
 //      refs.input.value = savedMessage;
-     
+
 //    };
- 
+
 // };
 
 // ====================================================== ASYNC AWAIT (firebase)===============================================================
 
-
-
 // const createUser =  options => {
 // return  axios.post(`${process.env.NODE_ENV_BASE_URL}/users.json`, options)
-   
+
 // }
 // const getUserInfo =  id => {
 // return  axios.get(`${process.env.NODE_ENV_BASE_URL}/users/${id}.json`)
-   
+
 // }
 
 // =======================================================================================================================================
@@ -323,11 +308,8 @@ import servises from '../servises/api'
 // // console.log(process.env.NODE_ENV_BASE_URL);
 // render()
 
-
 // ===========================================================   ФЕЧ ЗАПРОС НА ТЕСТОВЕ ЗАВДАННЯ ДО ВРОЦЛАВА ПУНК АПІАЙ ====================
 // const divEL = document.querySelector('.titleEl');
-
-
 
 // fetch("https://api.punkapi.com/v2/beers?page=1&per_page=5").then(response => response.json())
 //    .then(renderBeer)
@@ -340,7 +322,6 @@ import servises from '../servises/api'
 
 // ========================================================================================================================================================
 
-
 // console.log(servises)
 // const input = document.getElementById('input');
 
@@ -352,15 +333,6 @@ import servises from '../servises/api'
 //    console.log(valueInput);
 //    servises(valueInput).then(data => {console.log(data)})
 // }
-
-
-
-
-
-
-
-
-
 
 // ======================================== FILMS ===========================================
 
@@ -376,7 +348,7 @@ import servises from '../servises/api'
 //    <div class="class__photo">
 //    <img src ="https://image.tmdb.org/t/p/w500${el.poster_path}" class="photo">
 //    </div>
- 
+
 //   <div>
 //    <h1 class="title">${el.original_title}</h1>
 //    <p>${el.release_date}</p>
@@ -384,9 +356,12 @@ import servises from '../servises/api'
 //     </a>
 //     </div>`)), '');
 //    divEL.innerHTML = res;
- 
+
 // })
 
 // ===================================================================================================
 
 // ========================================= AVATAR ===================================================
+
+const exampleAttr = div1.getAttribute("id");
+console.log(exampleAttr);
